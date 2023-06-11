@@ -16,6 +16,10 @@ You can install them by running the following command:
 pip install googletrans==4.0.0-rc1
 pip install fuzzywuzzy
 ```
+And ofc you need the download program library:
+```bash
+pip install pypi_python_translator
+```
 
 ## **Services**
 
