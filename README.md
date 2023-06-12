@@ -1,5 +1,5 @@
 # **PYPI PYTHON TRANSLATOR**
-This is a translation application that allows you to translate text from one language to another using the Google Translate service. The program provides a user-friendly interface that automatically translates itself into the selected language.
+This is a translation package that allows you to translate text from one language to another using the Google Translate service. The program provides a user-friendly interface that automatically translates itself into the selected language.
 
 ---
 
@@ -16,7 +16,7 @@ You can install them by running the following command:
 pip install googletrans==4.0.0-rc1
 pip install fuzzywuzzy
 ```
-And ofc you need the download program library:
+And ofc you need the download package library:
 ```bash
 pip install pypi_python_translator
 ```
@@ -46,6 +46,10 @@ Writes all Google services to the `services.txt` file for using the transcript.
 
 This is a self-translate function. It translates the given `text` into the specified `languages`.
 
+### `writeusage(num)`
+
+This code will write the given example with the value of "num" as file "example_num.py".
+
 ### `init(langg: str) -> any`
 
 This is the main function to start the translation application. It adjusts the interface based on the selected language and prompts the user for the desired exit language. After that, it performs the translations.
@@ -58,6 +62,61 @@ After setting up the necessary files and libraries, you can use the `init("langu
 
 Please make sure to enter valid languages and follow the instructions provided by the program.
 
-**Note:** This program runs in an infinite loop until the user decides to exit. To terminate the program, use the appropriate exit command.
+# **Examples**
+Example usages for this package. you can also write those examples by using code: 
 
+```python
+from translator import *
+writeusage(example_number) #for ex -> writeusage(1) writes the first example.
+```
+
+---
+---
+## `Example Usage (1): Using init() function to start program.`
+In this example we are going to use init() function to start main program in given `<language code>`, no need to much talk this is the easiest.
+```python
+from translator import *
+init("<language code>") #For ex -> init("en") start code in english GUI.
+```
+`NOTE: This code will start program for "1" times, and won't repeat himself.`<br>
+
+---
+## `Example Usage (2): Using TRnslte() function`<br>
+In this example we are using TRnslte() function to translate `your_message`<br>
+```python
+from translator import *
+
+your_message = "Hello world"
+
+translated_message = TRnslte(your_message,"<language code>")
+
+print(translated_message)
+
+```
+This code will translate `your_message` to the given `<language code>` and prints.
+
+---
+## `Example Usage (3): Using this program for full file translating;`<br>
+I have to warn you: in this example `with` function only supports utf-8 characters. if you want to use any other encoding you can change it by editing `encoding=""` part.
+
+```python
+from translator import *
+
+filecontent = []
+with open("<your_file>.txt", "r",encoding="utf-8") as file: #read the file for translation.
+    #The .txt extension is not mandatory, it can be any extension. The important thing is that you specify the encoding of the file correctly.
+    for line in file:
+        line = line.strip()  # Remove spaces and empty lines  
+        if line:  # If line has characters
+            filecontent.append(line)
+
+with open("<output_file>.txt","w",encoding="utf-8") as file: #output file writing, it has to be same encoding with reading file
+    for line in filecontent: #Every line in our list;
+        translated_line = TRnslte(line,"<language_code>") #translate line to the "your language code"
+        file.write(translated_line + "\n") #write the translated line to the file.
+```
+# **LICENSE**
+[SForces/PyPi_Python_Translator is licensed under the
+GNU General Public License v2.0](https://github.com/SForces/PyPi_Python_Translator/blob/main/LICENSE)
+---
 ---
